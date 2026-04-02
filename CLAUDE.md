@@ -99,16 +99,3 @@ Key packages (in `env/`):
 ### 待完成
 - [ ] 添加 JWT 认证功能
 - [ ] 集成 Redis 缓存
-
----
-
-## 今日进度 (2026-04-02)
-
-1. ✅ 项目目录重构 (`app/model` → `app/models`, `app/repo` → `app/repositories`)
-2. ✅ 完善 Repository 基类（异步 CRUD + 软删除 + 搜索）
-3. ✅ 添加 Service 层 (`UserService`)
-4. ✅ 完善 Schemas (`UserCreate`, `UserUpdate`, `UserDetail`, `UserList`)
-5. ✅ 重构 API 层（使用 APIRouter + deps.py）
-6. ✅ 清理无用文件
-7. ✅ 数据库 `tb_users` 表创建完成
-8. ✅ 更新 CLAUDE.md 和 process.md

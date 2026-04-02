@@ -85,13 +85,13 @@
 
 ---
 
-## 今日完成
+## 今日完成 (2026-04-02)
 
-✅ 项目重构（目录结构 + 分层架构）
-✅ 完善 Repository 基类（异步 CRUD）
-✅ 添加 Service 层
-✅ 完善 Schemas
-✅ 重构 API 层（APIRouter）
-✅ 清理无用文件
-✅ 数据库迁移文件重建
-✅ `tb_users` 表创建完成
+1. ✅ 项目目录重构 (`app/model` → `app/models`, `app/repo` → `app/repositories`)
+2. ✅ 完善 Repository 基类（异步 CRUD + 软删除 + 搜索）
+3. ✅ 添加 Service 层 (`UserService`)
+4. ✅ 完善 Schemas (`UserCreate`, `UserUpdate`, `UserDetail`, `UserList`)
+5. ✅ 重构 API 层（使用 APIRouter + deps.py）
+6. ✅ 清理无用文件
+7. ✅ 数据库 `tb_users` 表创建完成
+8. ✅ 更新 CLAUDE.md 和 process.md
