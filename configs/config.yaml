@@ -1,0 +1,20 @@
+service:
+  port: 8000
+  debug: false
+
+mysql:
+  url: "mysql+asyncmy://root:123456@192.168.5.245:3306/firewall?charset=utf8mb4"
+  poolSize: 10
+  poolTimeout: 30
+  autocommit: false
+
+redis:
+  host: 192.168.5.245
+  port: 6379
+  password: "123456"
+
+logs:
+  level: info
+  output: console
+  logDir: logs
+  fileName: app.log
