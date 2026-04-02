@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core import AppConfig
@@ -8,7 +7,7 @@ from app.core.response import JsonResponse
 
 
 def create_app(config: AppConfig) -> FastAPI:
-    logger.info_with(f"app start", "address", config.service.port)
+    logger.info_with("app start", "address", config.service.port)
     app = FastAPI(
         root_path="/api/v1",
         openapi_url="/api/v1/openapi.json",
@@ -16,9 +15,8 @@ def create_app(config: AppConfig) -> FastAPI:
     )
 
     def init_router():
-        from app.api.v1.login.views import getUser
-        # from app.api.v1.login.views import LoginRouter
-        app.include_router(getUser)
+        from app.api.v1.login import views as login_views
+        app.include_router(login_views.router)
 
     app.add_middleware(
         CORSMiddleware,
@@ -27,7 +25,6 @@ def create_app(config: AppConfig) -> FastAPI:
         allow_methods=["*"],
         allow_headers=["*"],
     )
-    # app.router.route_class = CustomRoute
 
     init_router()
     return app

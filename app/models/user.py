@@ -5,6 +5,7 @@ from app.core.model import BaseModel
 
 
 class User(BaseModel):
-    __tablename__ = "users"
+    __tablename__ = "tb_users"
+    username: Mapped[str] = mapped_column(String(50), unique=True, comment="用户名")
     name: Mapped[str] = mapped_column(String(50))
     email: Mapped[str] = mapped_column(String(100), unique=True)

@@ -46,8 +46,9 @@ All configuration is managed via `configs/config.yaml` (loaded by `app/core/__in
 
 ### Layered Structure
 - **API Layer**: `app/api/v1/` - FastAPI routers and views
-- **Repository Layer**: `app/repo/` - Database access (Repository pattern)
-- **Model Layer**: `app/model/` - SQLAlchemy ORM models
+- **Service Layer**: `app/services/` - Business logic
+- **Repository Layer**: `app/repositories/` - Database access (Repository pattern)
+- **Model Layer**: `app/models/` - SQLAlchemy ORM models
 - **Schema Layer**: `app/schemas/` - Pydantic request/response schemas
 - **Core Layer**: `app/core/` - Shared utilities (db, config, logger, exceptions, response)
 
@@ -65,11 +66,12 @@ Models inherit from `BaseModel` (in `app/core/model.py`) which provides:
 
 ### Adding New API Endpoints
 
-1. Create/update model in `app/model/`
-2. Create/update repository in `app/repo/` extending `Repository`
+1. Create/update model in `app/models/`
+2. Create/update repository in `app/repositories/` extending `Repository`
 3. Create/update schema in `app/schemas/`
-4. Add route in `app/api/v1/<module>/views.py`
-5. Register router in `app/api/__init__.py`'s `init_router()`
+4. Create/update service in `app/services/`
+5. Add route in `app/api/v1/<module>/views.py`
+6. Register router in `app/api/__init__.py`'s `init_router()`
 
 ### Logging
 Use `from app.core.logger import logger`. Provides structured logging with `logger.info_with()`, `logger.error_with()`, etc.
@@ -87,3 +89,26 @@ Key packages (in `env/`):
 
 ## Skills
 - gc: 执行 .claude/skills/git-commit/SKILL.md
+
+## 进行中的需求
+
+### 已完成
+- [项目重构计划](docs/claude/REFACTOR_PLAN.md) - 重构目录结构和分层架构 ✅
+  - 任务详情: [docs/claude/process.md](./docs/claude/process.md)
+
+### 待完成
+- [ ] 添加 JWT 认证功能
+- [ ] 集成 Redis 缓存
+
+---
+
+## 今日进度 (2026-04-02)
+
+1. ✅ 项目目录重构 (`app/model` → `app/models`, `app/repo` → `app/repositories`)
+2. ✅ 完善 Repository 基类（异步 CRUD + 软删除 + 搜索）
+3. ✅ 添加 Service 层 (`UserService`)
+4. ✅ 完善 Schemas (`UserCreate`, `UserUpdate`, `UserDetail`, `UserList`)
+5. ✅ 重构 API 层（使用 APIRouter + deps.py）
+6. ✅ 清理无用文件
+7. ✅ 数据库 `tb_users` 表创建完成
+8. ✅ 更新 CLAUDE.md 和 process.md
